@@ -1,8 +1,10 @@
-package pageObject;
+package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -50,14 +52,20 @@ public class MainPage {
 
     @Step("Нажать на кнопку Булки")
     public void clickBuns() {
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable(headerBuns));
-        driver.findElement(headerBuns).click();
+        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable(sectionBuns));
+        driver.findElement(sectionBuns).click();
     }
 
     @Step("Отображение текста Булки в раздели Булки")
     public boolean isTextBuns() {
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfElementLocated(sectionBuns));
-        return driver.findElement(sectionBuns).isDisplayed();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+
+        WebElement element = driver.findElement(headerBuns);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(headerBuns));
+
+        return element.isDisplayed() && element.getAttribute("class").contains("active");
+
     }
 
     @Step("Нажать на кнопку Соусы")
@@ -68,8 +76,16 @@ public class MainPage {
 
     @Step("Отображение текста Соусы в раздели Соусы")
     public boolean isTextSauces() {
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfElementLocated(headerSauces));
-        return driver.findElement(headerSauces).isDisplayed();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(headerSauces));
+
+        WebElement element = driver.findElement(headerSauces);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+
+        return element.isDisplayed() && element.getAttribute("class").contains("active");
+
     }
 
     @Step("Нажать на кнопку Начинки")
@@ -81,7 +97,14 @@ public class MainPage {
 
     @Step("Отображение текста Начинки в раздели Начинки")
     public boolean isTextFillings() {
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfElementLocated(headerFillings));
-        return driver.findElement(headerFillings).isDisplayed();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(headerFillings));
+
+        WebElement element = driver.findElement(headerFillings);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+
+        return element.isDisplayed() && element.getAttribute("class").contains("active");
     }
 }

@@ -6,13 +6,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import pageObject.LogInPage;
-import pageObject.MainPage;
-import pageObject.RegistrationPage;
-import userDto.UserCreate;
-
-import java.time.Duration;
+import pages.LogInPage;
+import pages.MainPage;
+import pages.RegistrationPage;
+import dto.UserCreate;
 
 public class RegistrationTest {
     private DriverFactory driverFactory = new DriverFactory();

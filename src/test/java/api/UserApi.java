@@ -3,8 +3,8 @@ package api;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import userDto.UserCreate;
-import userDto.UserLogIn;
+import dto.UserCreate;
+import dto.UserLogIn;
 
 import static io.restassured.RestAssured.given;
 

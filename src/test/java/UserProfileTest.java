@@ -5,18 +5,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import pageObject.*;
-import userDto.UserCreate;
-import userDto.UserLogIn;
-
-import java.time.Duration;
+import pages.*;
+import dto.UserCreate;
+import dto.UserLogIn;
 
 public class UserProfileTest {
     private DriverFactory driverFactory = new DriverFactory();
     private WebDriver driver;
-    private String url = "https://stellarburgers.nomoreparties.site/";
-
 
     UserApi userApi;
     MainPage mainPage;

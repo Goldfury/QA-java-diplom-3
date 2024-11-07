@@ -7,12 +7,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import pageObject.ForgottenPasswordPage;
-import pageObject.LogInPage;
-import pageObject.MainPage;
-import pageObject.RegistrationPage;
-import userDto.UserCreate;
-import userDto.UserLogIn;
+import pages.ForgottenPasswordPage;
+import pages.LogInPage;
+import pages.MainPage;
+import pages.RegistrationPage;
+import dto.UserCreate;
+import dto.UserLogIn;
 
 
 public class AuthTest {
@@ -46,7 +46,7 @@ public class AuthTest {
     @Test
     @DisplayName("Вход по кнопке «Войти в аккаунт» на главной")
     @Description("Авторизация созданного юзера")
-    public void test1() {
+    public void logInCreatedUser() {
         mainPage.clickBtnEnterAccount();
         logInPage.setAuthUserData(userLogIn);
         logInPage.clickBtnLogin();
@@ -54,7 +54,7 @@ public class AuthTest {
 
     @Test
     @DisplayName("Вход через кнопку «Личный кабинет»")
-    public void test2() {
+    public void logInFromHeaderButton() {
         mainPage.clickBtnPersonalAccount();
         assertTrue(logInPage.isEnterHeaderVisible());
 
@@ -62,7 +62,7 @@ public class AuthTest {
 
     @Test
     @DisplayName("вход через кнопку в форме регистрации")
-    public void test3() {
+    public void logInFromRegistrationButton() {
         mainPage.clickBtnPersonalAccount();
         logInPage.clickBtnRegistration();
         registrationPage.clickEnterButton();
@@ -71,7 +71,7 @@ public class AuthTest {
 
     @Test
     @DisplayName("вход через кнопку в форме восстановления пароля")
-    public void test4() {
+    public void logInFromPassRecoverForm() {
         mainPage.clickBtnPersonalAccount();
         logInPage.clickBtnRecoverPassword();
         forgottenPasswordPage.clickLogInBtn();

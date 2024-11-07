@@ -4,16 +4,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import pageObject.MainPage;
-
-import java.time.Duration;
+import pages.MainPage;
 
 public class BurgerConstructorTest {
 
     private DriverFactory driverFactory = new DriverFactory();
     private WebDriver driver;
-    private String url = "https://stellarburgers.nomoreparties.site/";
     //Pages
     MainPage mainPage;
 
@@ -28,7 +24,9 @@ public class BurgerConstructorTest {
 
     @Test
     @DisplayName("Переходы к разделу Булки")
+    @Description("Сначала кликает по Соусу чтобы кнопка нажатия на булочек была рабочей")
     public void checkBunsSection(){
+        mainPage.clickSauces();
         mainPage.clickBuns();
         mainPage.isTextBuns();
 
@@ -51,6 +49,6 @@ public class BurgerConstructorTest {
 
     @After
     public void tearDown(){
-        driver.quit();
+//        driver.quit();
     }
 }
